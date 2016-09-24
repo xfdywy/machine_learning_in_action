@@ -40,7 +40,7 @@ def classify0(test,dataset,label,k):
     
     
 
-def handwriteclass():
+def handwriteclass(k):
 
     trainingfile = listdir('trainingDigits')
     m = len(trainingfile)
@@ -58,7 +58,7 @@ def handwriteclass():
         thistest = testfile[jj]
         thislabel =  int(thistest.split('_')[0])
         testdata = img2vector('./testDigits/'+thistest)
-        classifierres = classify0(testdata,trainingdata,traininglabel,3)
+        classifierres = classify0(testdata,trainingdata,traininglabel,k)
         print "the classifier came back with: %d, the real answer is: %d , the picture is %d" % (classifierres, thislabel,jj)
         if (classifierres != thislabel): err += 1.0
     print "\nthe total number of errors is: %d" % err
